@@ -68,12 +68,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     setTimeout(() => Router.loadRoute(Router.currentRoute), 100);
   });
 
-  document.getElementById('sidebarToggle').addEventListener('click', () => {
+  function closeSidebar() {
     document.getElementById('sidebar').classList.remove('open');
-  });
+    document.getElementById('sidebarOverlay').classList.remove('active');
+  }
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const isOpen = sidebar.classList.toggle('open');
+    overlay.classList.toggle('active', isOpen);
+  }
 
-  document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarToggle').addEventListener('click', closeSidebar);
+  document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
+  document.getElementById('hamburger').addEventListener('click', toggleSidebar);
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeSidebar();
   });
 
   document.getElementById('modalClose').addEventListener('click', closeModal);
