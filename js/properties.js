@@ -2,7 +2,7 @@ const Properties = {
   async render() {
     const properties = await db.getAll('properties');
     const title = 'Imóveis';
-    const actions = `<button class="btn btn-primary" onclick="Properties.openForm()">+ Novo Imóvel</button>`;
+    const actions = `<button class="btn btn-primary" onclick="Properties.openForm()">${Icons.plus} Novo Imóvel</button>`;
 
     const filterBar = `<div class="filter-bar">
       <select id="filterPropertyStatus" onchange="Properties.render()">
@@ -32,7 +32,7 @@ const Properties = {
     if (searchFilter) filtered = filtered.filter(p => p.name?.toLowerCase().includes(searchFilter) || p.code?.toLowerCase().includes(searchFilter) || p.neighborhood?.toLowerCase().includes(searchFilter));
 
     if (filtered.length === 0) {
-      return { html: `<div class="section-header"><h2>${title}</h2><div>${actions}</div></div>${emptyState('🏘️', 'Nenhum imóvel cadastrado', 'Cadastre seu primeiro imóvel para começar.', 'Cadastrar Imóvel', '() => Properties.openForm()')}` };
+      return { html: `<div class="section-header"><h2>${title}</h2><div>${actions}</div></div>${emptyState(Icons.building, 'Nenhum imóvel cadastrado', 'Cadastre seu primeiro imóvel para começar.', 'Cadastrar Imóvel', '() => Properties.openForm()')}` };
     }
 
     const headers = ['Código', 'Nome', 'Tipo', 'Bairro', 'Valor', 'Status', 'Ações'];
@@ -44,9 +44,9 @@ const Properties = {
       Utils.formatCurrency(p.rentAmount),
       `<span class="status ${Utils.statusClass(p.status)}">${Utils.statusLabel(p.status)}</span>`,
       `<div class="actions">
-        <button class="btn btn-sm btn-ghost" onclick="Properties.view(${p.id})">👁️</button>
-        <button class="btn btn-sm btn-ghost" onclick="Properties.openForm(${p.id})">✏️</button>
-        <button class="btn btn-sm btn-ghost" onclick="Properties.remove(${p.id})">🗑️</button>
+        <button class="btn btn-sm btn-ghost" onclick="Properties.view(${p.id})">${Icons.eye}</button>
+        <button class="btn btn-sm btn-ghost" onclick="Properties.openForm(${p.id})">${Icons.edit}</button>
+        <button class="btn btn-sm btn-ghost" onclick="Properties.remove(${p.id})">${Icons.trash}</button>
       </div>`,
     ]);
 

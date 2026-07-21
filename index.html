@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233b82f6'/><path d='M20 60L50 30l30 30v30a5 5 0 0 1-5 5H25a5 5 0 0 1-5-5V60z' fill='white'/><path d='M35 85V55h30v30' fill='none' stroke='%233b82f6' stroke-width='4'/></svg>">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <title>Gestão de Imóveis</title>
@@ -18,47 +18,47 @@
     <aside id="sidebar" class="sidebar">
       <div class="sidebar-header">
         <div class="logo">
-          <span class="logo-icon">🏠</span>
+          <span class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
           <span class="logo-text">ImobAdmin</span>
         </div>
-        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&times;</button>
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
       <nav class="sidebar-nav">
         <a href="#dashboard" class="nav-item active" data-route="dashboard">
-          <span class="nav-icon">📊</span>
+          <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
           <span class="nav-label">Dashboard</span>
         </a>
         <a href="#properties" class="nav-item" data-route="properties">
-          <span class="nav-icon">🏘️</span>
+          <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21V11h6v10"/><path d="M15 21h6"/></svg></span>
           <span class="nav-label">Imóveis</span>
         </a>
         <a href="#tenants" class="nav-item" data-route="tenants">
-          <span class="nav-icon">👥</span>
+          <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
           <span class="nav-label">Inquilinos</span>
         </a>
         <a href="#contracts" class="nav-item" data-route="contracts">
-          <span class="nav-icon">📄</span>
+          <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
           <span class="nav-label">Contratos</span>
         </a>
         <a href="#finances" class="nav-item" data-route="finances">
-          <span class="nav-icon">💰</span>
+          <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
           <span class="nav-label">Financeiro</span>
         </a>
         <a href="#crm" class="nav-item" data-route="crm">
-          <span class="nav-icon">🤝</span>
+          <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></span>
           <span class="nav-label">CRM</span>
         </a>
         <a href="#calendar" class="nav-item" data-route="calendar">
-          <span class="nav-icon">📅</span>
+          <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
           <span class="nav-label">Agenda</span>
         </a>
       </nav>
       <div class="sidebar-footer">
         <div style="display:flex;gap:4px;align-items:center;">
-          <button id="loadDemoData" class="btn btn-sm btn-ghost" title="Carregar dados demo" style="font-size:11px;padding:4px 8px;">📥 Demo</button>
-          <button id="clearAllData" class="btn btn-sm btn-ghost" title="Limpar dados" style="font-size:11px;padding:4px 8px;">🗑️</button>
+          <button id="loadDemoData" class="btn btn-sm btn-ghost" title="Carregar dados demo" style="font-size:11px;padding:4px 8px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Demo</button>
+          <button id="clearAllData" class="btn btn-sm btn-ghost" title="Limpar dados" style="font-size:11px;padding:4px 8px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
           <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
           </button>
         </div>
         <div class="user-info">
@@ -71,15 +71,15 @@
 
     <main id="main" class="main">
       <header class="topbar">
-        <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
         <div class="topbar-title" id="pageTitle">Dashboard</div>
         <div class="topbar-search">
-          <span class="search-icon">🔍</span>
+          <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
           <input type="text" id="globalSearch" placeholder="Pesquisa global..." autocomplete="off">
           <div id="searchResults" class="search-results"></div>
         </div>
         <div class="topbar-actions">
-          <button class="btn btn-sm btn-primary" id="quickAction">+ Novo</button>
+          <button class="btn btn-sm btn-primary" id="quickAction"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Novo</button>
         </div>
       </header>
 
@@ -92,7 +92,7 @@
     <div class="modal" id="modalContainer">
       <div class="modal-header">
         <h3 id="modalTitle">Modal</h3>
-        <button class="modal-close" id="modalClose">&times;</button>
+        <button class="modal-close" id="modalClose"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
       <div class="modal-body" id="modalBody"></div>
       <div class="modal-footer" id="modalFooter"></div>

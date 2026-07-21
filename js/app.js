@@ -38,7 +38,7 @@ const Router = {
       if (result.after) setTimeout(result.after, 100);
     } catch (e) {
       console.error('Erro ao carregar rota:', e);
-      content.innerHTML = `<div class="empty-state"><div class="icon">⚠️</div><h3>Erro ao carregar</h3><p>${e.message}</p></div>`;
+      content.innerHTML = `<div class="empty-state"><div class="icon">${Icons.alertTriangle}</div><h3>Erro ao carregar</h3><p>${e.message}</p></div>`;
     }
   },
 
@@ -58,13 +58,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const savedTheme = localStorage.getItem('imobadmin-theme') || 'dark';
   document.body.className = savedTheme;
-  document.querySelector('.theme-icon').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+  document.querySelector('.theme-icon').innerHTML = savedTheme === 'dark' ? Icons.moon : Icons.sun;
 
   document.getElementById('themeToggle').addEventListener('click', () => {
     const isDark = document.body.classList.contains('dark');
     document.body.className = isDark ? 'light' : 'dark';
     localStorage.setItem('imobadmin-theme', document.body.className);
-    document.querySelector('.theme-icon').textContent = isDark ? '☀️' : '🌙';
+    document.querySelector('.theme-icon').innerHTML = isDark ? Icons.sun : Icons.moon;
     setTimeout(() => Router.loadRoute(Router.currentRoute), 100);
   });
 

@@ -10,10 +10,10 @@ const Contracts = {
     const tMap = {}; tenants.forEach(t => tMap[t.id] = t);
 
     const title = 'Contratos';
-    const actions = `<button class="btn btn-primary" onclick="Contracts.openForm()">+ Novo Contrato</button>`;
+    const actions = `<button class="btn btn-primary" onclick="Contracts.openForm()">${Icons.plus} Novo Contrato</button>`;
 
     if (contracts.length === 0) {
-      return { html: `<div class="section-header"><h2>${title}</h2><div>${actions}</div></div>${emptyState('📄', 'Nenhum contrato cadastrado', 'Crie contratos vinculando imóveis e inquilinos.', 'Criar Contrato', '() => Contracts.openForm()')}` };
+      return { html: `<div class="section-header"><h2>${title}</h2><div>${actions}</div></div>${emptyState(Icons.file, 'Nenhum contrato cadastrado', 'Crie contratos vinculando imóveis e inquilinos.', 'Criar Contrato', '() => Contracts.openForm()')}` };
     }
 
     const headers = ['Imóvel', 'Inquilino', 'Início', 'Término', 'Valor', 'Vencimento', 'Status', 'Ações'];
@@ -30,9 +30,9 @@ const Contracts = {
         `Dia ${c.dueDay || 5}`,
         expiring ? '<span class="status status-pending">Vencendo</span>' : '<span class="status status-active">Ativo</span>',
         `<div class="actions">
-          <button class="btn btn-sm btn-ghost" onclick="Contracts.view(${c.id})">👁️</button>
-          <button class="btn btn-sm btn-ghost" onclick="Contracts.openForm(${c.id})">✏️</button>
-          <button class="btn btn-sm btn-ghost" onclick="Contracts.remove(${c.id})">🗑️</button>
+          <button class="btn btn-sm btn-ghost" onclick="Contracts.view(${c.id})">${Icons.eye}</button>
+          <button class="btn btn-sm btn-ghost" onclick="Contracts.openForm(${c.id})">${Icons.edit}</button>
+          <button class="btn btn-sm btn-ghost" onclick="Contracts.remove(${c.id})">${Icons.trash}</button>
         </div>`,
       ];
     });

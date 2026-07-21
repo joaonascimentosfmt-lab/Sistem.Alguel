@@ -19,7 +19,7 @@ const Finances = {
         <option value="expenses" ${this.tab === 'expenses' ? 'selected' : ''}>Despesas</option>
         <option value="cashflow" ${this.tab === 'cashflow' ? 'selected' : ''}>Fluxo de Caixa</option>
       </select>
-      <button class="btn btn-primary" onclick="Finances.openForm('${this.tab}')">+ Nova ${this.tab === 'expenses' ? 'Despesa' : 'Receita'}</button>
+      <button class="btn btn-primary" onclick="Finances.openForm('${this.tab}')">${Icons.plus} Nova ${this.tab === 'expenses' ? 'Despesa' : 'Receita'}</button>
     </div>`;
 
     if (this.tab === 'receipts') return this.renderReceipts(receipts, contracts, pMap, title, tabs);
@@ -31,7 +31,7 @@ const Finances = {
     const cMap = {}; contracts.forEach(c => cMap[c.id] = c);
 
     if (receipts.length === 0) {
-      return { html: `${tabs}${emptyState('💰', 'Nenhuma receita registrada', 'Registre os pagamentos de aluguel dos inquilinos.', 'Nova Receita', '() => Finances.openForm(\"receipts\")')}` };
+      return { html: `${tabs}${emptyState(Icons.trendingUp, 'Nenhuma receita registrada', 'Registre os pagamentos de aluguel dos inquilinos.', 'Nova Receita', '() => Finances.openForm(\"receipts\")')}` };
     }
 
     const headers = ['Descrição', 'Contrato', 'Valor', 'Vencimento', 'Status', 'Pagamento', 'Ações'];
@@ -45,9 +45,9 @@ const Finances = {
         `<span class="status ${Utils.statusClass(r.status)}">${Utils.statusLabel(r.status)}</span>`,
         r.status === 'pago' ? `${Utils.formatDate(r.paymentDate)} ${r.paymentMethod ? '/ ' + Utils.paymentMethodLabel(r.paymentMethod) : ''}` : '-',
         `<div class="actions">
-          <button class="btn btn-sm btn-ghost" onclick="Finances.pay(${r.id})">💳</button>
-          <button class="btn btn-sm btn-ghost" onclick="Finances.openForm('receipts', ${r.id})">✏️</button>
-          <button class="btn btn-sm btn-ghost" onclick="Finances.remove('receipts', ${r.id})">🗑️</button>
+          <button class="btn btn-sm btn-ghost" onclick="Finances.pay(${r.id})">${Icons.creditCard}</button>
+          <button class="btn btn-sm btn-ghost" onclick="Finances.openForm('receipts', ${r.id})">${Icons.edit}</button>
+          <button class="btn btn-sm btn-ghost" onclick="Finances.remove('receipts', ${r.id})">${Icons.trash}</button>
         </div>`,
       ];
     });
@@ -57,7 +57,7 @@ const Finances = {
 
   renderExpenses(expenses, pMap, title, tabs) {
     if (expenses.length === 0) {
-      return { html: `${tabs}${emptyState('💸', 'Nenhuma despesa registrada', 'Registre as despesas dos imóveis.', 'Nova Despesa', '() => Finances.openForm(\"expenses\")')}` };
+      return { html: `${tabs}${emptyState(Icons.trendingDown, 'Nenhuma despesa registrada', 'Registre as despesas dos imóveis.', 'Nova Despesa', '() => Finances.openForm(\"expenses\")')}` };
     }
 
     const headers = ['Descrição', 'Imóvel', 'Tipo', 'Valor', 'Data', 'Ações'];
@@ -68,8 +68,8 @@ const Finances = {
       Utils.formatCurrency(e.amount),
       Utils.formatDate(e.date),
       `<div class="actions">
-        <button class="btn btn-sm btn-ghost" onclick="Finances.openForm('expenses', ${e.id})">✏️</button>
-        <button class="btn btn-sm btn-ghost" onclick="Finances.remove('expenses', ${e.id})">🗑️</button>
+        <button class="btn btn-sm btn-ghost" onclick="Finances.openForm('expenses', ${e.id})">${Icons.edit}</button>
+        <button class="btn btn-sm btn-ghost" onclick="Finances.remove('expenses', ${e.id})">${Icons.trash}</button>
       </div>`,
     ]);
 
@@ -97,11 +97,11 @@ const Finances = {
 
     const html = `${tabs}
       <div class="cards-grid" style="margin-bottom:16px;">
-        ${renderCard('Total Receitas', Utils.formatCurrency(totalReceitas), '📈')}
-        ${renderCard('Total Despesas', Utils.formatCurrency(totalDespesas), '📉')}
-        ${renderCard('Saldo', Utils.formatCurrency(saldo), '💰')}
+        ${renderCard('Total Receitas', Utils.formatCurrency(totalReceitas), Icons.trendingUp)}
+        ${renderCard('Total Despesas', Utils.formatCurrency(totalDespesas), Icons.trendingDown)}
+        ${renderCard('Saldo', Utils.formatCurrency(saldo), Icons.dollar)}
       </div>
-      <div class="chart-card"><h3>Fluxo de Caixa</h3><canvas id="chartCashflow"></canvas></div>
+      <div class="chart-card"><h3>${Icons.dollar} Fluxo de Caixa</h3><canvas id="chartCashflow"></canvas></div>
       ${renderTable(['Período', 'Receitas', 'Despesas', 'Saldo'], keys.map(k => {
         const r = months[k].receitas, d = months[k].despesas;
         return [`${k}`, Utils.formatCurrency(r), Utils.formatCurrency(d), `<span style="color:${r-d>=0?'var(--success)':'var(--danger)'}">${Utils.formatCurrency(r-d)}</span>`];

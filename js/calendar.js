@@ -79,20 +79,20 @@ const Calendar = {
 
     const html = `
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-        <h2>📅 Agenda - ${monthName} ${year}</h2>
+        <h2>${Icons.calendar} Agenda - ${monthName} ${year}</h2>
         <div style="display:flex;gap:8px;">
-          <button class="btn btn-sm btn-ghost" onclick="Calendar.changeMonth(-1)">←</button>
-          <button class="btn btn-sm btn-ghost" onclick="Calendar.changeMonth(1)">→</button>
-          <button class="btn btn-sm btn-primary" onclick="Calendar.openEventForm()">+ Evento</button>
+          <button class="btn btn-sm btn-ghost" onclick="Calendar.changeMonth(-1)">${Icons.arrowLeft}</button>
+          <button class="btn btn-sm btn-ghost" onclick="Calendar.changeMonth(1)">${Icons.arrowRight}</button>
+          <button class="btn btn-sm btn-primary" onclick="Calendar.openEventForm()">${Icons.plus} Evento</button>
         </div>
       </div>
       <div class="card">
         <div class="calendar-grid">${headerDays}${days}</div>
       </div>
-      <div style="display:flex;gap:16px;margin-top:16px;font-size:12px;color:var(--text-secondary);">
-        <span>🔴 Vencimentos</span>
-        <span>🟢 Visitas</span>
-        <span>🔵 Contratos</span>
+      <div style="display:flex;gap:16px;margin-top:16px;font-size:12px;color:var(--text-secondary);align-items:center;">
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--danger);margin-right:4px;"></span> Vencimentos</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--success);margin-right:4px;"></span> Visitas</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:4px;"></span> Contratos</span>
       </div>
       <div id="dayEvents" style="margin-top:16px;"></div>
     `;

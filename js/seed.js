@@ -119,7 +119,7 @@ const SeedData = {
       await db.add('events', ev);
     }
 
-    showToast(`✅ Dados demo carregados! ${properties.length} imóveis, ${tenants.length} inquilinos, ${contractData.length} contratos, ${receiptData.length} receitas, ${expenseData.length} despesas, ${leadData.length} leads.`, 'success');
+    showToast(`Dados demo carregados! ${properties.length} imóveis, ${tenants.length} inquilinos, ${contractData.length} contratos, ${receiptData.length} receitas, ${expenseData.length} despesas, ${leadData.length} leads.`, 'success');
     setTimeout(() => Router.navigate('dashboard'), 500);
   },
 
@@ -131,7 +131,7 @@ const SeedData = {
         await db.delete(store, item.id);
       }
     }
-    showToast('🗑️ Todos os dados foram limpos.', 'info');
+    showToast('Todos os dados foram limpos.', 'info');
     setTimeout(() => Router.navigate('dashboard'), 500);
   },
 };

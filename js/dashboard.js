@@ -29,24 +29,24 @@ const Dashboard = {
     }).length;
 
     const cards = [
-      renderCard('Total Imóveis', total, '🏘️', { className: 'dashboard-card' }),
-      renderCard('Alugados', alugados, '✅', { className: 'dashboard-card' }),
-      renderCard('Vagos', vagos, '📭', { className: 'dashboard-card' }),
-      renderCard('Receita Prevista', Utils.formatCurrency(receitaPrevista), '📈', { className: 'dashboard-card' }),
-      renderCard('Receita Recebida', Utils.formatCurrency(receitaRecebida), '💰', { className: 'dashboard-card' }),
-      renderCard('Em Atraso', Utils.formatCurrency(receitaAtraso), '⚠️', { className: 'dashboard-card' }),
-      renderCard('Despesas', Utils.formatCurrency(totalDespesas), '💸', { className: 'dashboard-card' }),
-      renderCard('Lucro', Utils.formatCurrency(lucro), '📊', { className: lucro >= 0 ? 'dashboard-card' : 'dashboard-card' }),
-      renderCard('Contratos Vencendo', `${vencendo30}`, '📄', { className: 'dashboard-card' }),
+      renderCard('Total Imóveis', total, Icons.building, { className: 'dashboard-card' }),
+      renderCard('Alugados', alugados, Icons.check, { className: 'dashboard-card' }),
+      renderCard('Vagos', vagos, Icons.x, { className: 'dashboard-card' }),
+      renderCard('Receita Prevista', Utils.formatCurrency(receitaPrevista), Icons.trendingUp, { className: 'dashboard-card' }),
+      renderCard('Receita Recebida', Utils.formatCurrency(receitaRecebida), Icons.dollar, { className: 'dashboard-card' }),
+      renderCard('Em Atraso', Utils.formatCurrency(receitaAtraso), Icons.alertCircle, { className: 'dashboard-card' }),
+      renderCard('Despesas', Utils.formatCurrency(totalDespesas), Icons.trendingDown, { className: 'dashboard-card' }),
+      renderCard('Lucro', Utils.formatCurrency(lucro), Icons.dollar, { className: lucro >= 0 ? 'dashboard-card' : 'dashboard-card' }),
+      renderCard('Contratos Vencendo', `${vencendo30}`, Icons.file, { className: 'dashboard-card' }),
     ];
 
     let html = `<div class="cards-grid">${cards.join('')}</div>`;
 
     html += `<div class="charts-grid">
-      <div class="chart-card"><h3>📈 Receita por Mês</h3><canvas id="chartRevenue"></canvas></div>
-      <div class="chart-card"><h3>📊 Ocupação</h3><canvas id="chartOccupancy"></canvas></div>
-      <div class="chart-card"><h3>💳 Pagamentos</h3><canvas id="chartPayments"></canvas></div>
-      <div class="chart-card"><h3>📈 Evolução da Receita</h3><canvas id="chartEvolution"></canvas></div>
+      <div class="chart-card"><h3>${Icons.trendingUp} Receita por Mês</h3><canvas id="chartRevenue"></canvas></div>
+      <div class="chart-card"><h3>${Icons.building} Ocupação</h3><canvas id="chartOccupancy"></canvas></div>
+      <div class="chart-card"><h3>${Icons.creditCard} Pagamentos</h3><canvas id="chartPayments"></canvas></div>
+      <div class="chart-card"><h3>${Icons.trendingUp} Evolução da Receita</h3><canvas id="chartEvolution"></canvas></div>
     </div>`;
 
     return { html, after: () => this.initCharts(receipts, properties) };

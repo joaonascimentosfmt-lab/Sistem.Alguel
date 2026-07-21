@@ -5,7 +5,7 @@ const CRM = {
     const title = 'CRM - Interessados';
 
     if (leads.length === 0) {
-      return { html: `<div class="section-header"><h2>${title}</h2><button class="btn btn-primary" onclick="CRM.openForm()">+ Novo Interessado</button></div>${emptyState('🤝', 'Nenhum interessado cadastrado', 'Cadastre leads interessados nos imóveis.', 'Novo Interessado', '() => CRM.openForm()')}` };
+      return { html: `<div class="section-header"><h2>${title}</h2><button class="btn btn-primary" onclick="CRM.openForm()">${Icons.plus} Novo Interessado</button></div>${emptyState(Icons.userPlus, 'Nenhum interessado cadastrado', 'Cadastre leads interessados nos imóveis.', 'Novo Interessado', '() => CRM.openForm()')}` };
     }
 
     const headers = ['Nome', 'Telefone', 'Email', 'Imóvel', 'Origem', 'Status', 'Ações'];
@@ -17,8 +17,8 @@ const CRM = {
       Utils.capitalize(l.source || '-'),
       `<span class="status ${Utils.statusClass(l.status === 'alugado' ? 'alugado' : l.status === 'novo' ? 'pendente' : l.status === 'perdido' ? 'atrasado' : '')}">${Utils.capitalize(l.status || 'novo')}</span>`,
       `<div class="actions">
-        <button class="btn btn-sm btn-ghost" onclick="CRM.openForm(${l.id})">✏️</button>
-        <button class="btn btn-sm btn-ghost" onclick="CRM.remove(${l.id})">🗑️</button>
+        <button class="btn btn-sm btn-ghost" onclick="CRM.openForm(${l.id})">${Icons.edit}</button>
+        <button class="btn btn-sm btn-ghost" onclick="CRM.remove(${l.id})">${Icons.trash}</button>
       </div>`,
     ]);
 

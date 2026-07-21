@@ -2,7 +2,7 @@ const Tenants = {
   async render() {
     const tenants = await db.getAll('tenants');
     const title = 'Inquilinos';
-    const actions = `<button class="btn btn-primary" onclick="Tenants.openForm()">+ Novo Inquilino</button>`;
+    const actions = `<button class="btn btn-primary" onclick="Tenants.openForm()">${Icons.plus} Novo Inquilino</button>`;
 
     const searchTerm = document.getElementById('filterTenantSearch')?.value?.toLowerCase();
 
@@ -10,7 +10,7 @@ const Tenants = {
     if (searchTerm) filtered = filtered.filter(t => t.name?.toLowerCase().includes(searchTerm) || t.cpf?.includes(searchTerm) || t.phone?.includes(searchTerm));
 
     if (filtered.length === 0) {
-      return { html: `<div class="section-header"><h2>${title}</h2><div>${actions}</div></div><div class="filter-bar"><input type="text" id="filterTenantSearch" placeholder="Buscar inquilino..." oninput="Tenants.render()" style="width:200px;"></div>${emptyState('👥', 'Nenhum inquilino cadastrado', 'Cadastre seus inquilinos para gerenciar contratos.', 'Cadastrar Inquilino', '() => Tenants.openForm()')}` };
+      return { html: `<div class="section-header"><h2>${title}</h2><div>${actions}</div></div><div class="filter-bar"><input type="text" id="filterTenantSearch" placeholder="Buscar inquilino..." oninput="Tenants.render()" style="width:200px;"></div>${emptyState(Icons.users, 'Nenhum inquilino cadastrado', 'Cadastre seus inquilinos para gerenciar contratos.', 'Cadastrar Inquilino', '() => Tenants.openForm()')}` };
     }
 
     const headers = ['Nome', 'CPF', 'Telefone', 'Email', 'Profissão', 'Renda', 'Ações'];
@@ -22,9 +22,9 @@ const Tenants = {
       Utils.truncate(t.profession, 15) || '-',
       Utils.formatCurrency(t.income),
       `<div class="actions">
-        <button class="btn btn-sm btn-ghost" onclick="Tenants.view(${t.id})">👁️</button>
-        <button class="btn btn-sm btn-ghost" onclick="Tenants.openForm(${t.id})">✏️</button>
-        <button class="btn btn-sm btn-ghost" onclick="Tenants.remove(${t.id})">🗑️</button>
+        <button class="btn btn-sm btn-ghost" onclick="Tenants.view(${t.id})">${Icons.eye}</button>
+        <button class="btn btn-sm btn-ghost" onclick="Tenants.openForm(${t.id})">${Icons.edit}</button>
+        <button class="btn btn-sm btn-ghost" onclick="Tenants.remove(${t.id})">${Icons.trash}</button>
       </div>`,
     ]);
 
