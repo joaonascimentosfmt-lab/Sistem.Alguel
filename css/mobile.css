@@ -1,0 +1,614 @@
+/* ============================================
+   mobile.css - Layout Mobile Aprimorado
+   Designado exclusivamente para telas ≤ 768px
+   Não afeta o layout desktop
+   ============================================ */
+
+/* --- Safe Area iOS (notch + home indicator) --- */
+@supports (padding: max(0px)) {
+  :root {
+    --safe-t: env(safe-area-inset-top, 0px);
+    --safe-r: env(safe-area-inset-right, 0px);
+    --safe-b: env(safe-area-inset-bottom, 0px);
+    --safe-l: env(safe-area-inset-left, 0px);
+  }
+}
+@supports not (padding: max(0px)) {
+  :root {
+    --safe-t: 0px; --safe-r: 0px; --safe-b: 0px; --safe-l: 0px;
+  }
+}
+
+/* Bottom nav só existe no DOM em mobile, mas garantia */
+.bottom-nav { display: none; }
+
+/* =============================================
+   Mobile (<= 768px) — iPhone, Android, tablets
+   ============================================= */
+@media (max-width: 768px) {
+  /* --- Variáveis Mobile --- */
+  :root {
+    --bottom-nav-height: 56px;
+    --mobile-header-height: 48px;
+    --mobile-radius: 10px;
+  }
+
+  /* ======================
+     Reset / Base Mobile
+     ====================== */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    /* Evita seleção acidental em elementos interativos */
+    -webkit-touch-callout: none;
+  }
+
+  /* Força 16px em inputs iOS para evitar zoom automático */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"] {
+    min-height: 48px;
+  }
+  select {
+    min-height: 48px;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+  label {
+    padding: 4px 0;
+  }
+
+  /* Touch-friendly: botões e links com altura mínima 44px (iOS HIG) */
+  .btn, .nav-item, button, a {
+    touch-action: manipulation;
+  }
+  .btn {
+    min-height: 44px;
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+  .btn-sm {
+    min-height: 36px;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  .btn-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Feedback tátil visual no toque */
+  .btn:active,
+  .nav-item:active,
+  .bottom-nav-item:active {
+    transform: scale(0.96);
+    opacity: 0.8;
+  }
+  .card:active {
+    transform: scale(0.98);
+  }
+
+  /* ======================
+     App Layout
+     ====================== */
+  #app {
+    padding-bottom: var(--safe-b);
+  }
+
+  /* Sidebar — já tem position:fixed no style.css 768px */
+  .sidebar {
+    /* Ajuste de sobreposição com bottom nav */
+    z-index: 300;
+    padding-bottom: var(--safe-b);
+  }
+  .sidebar-nav {
+    padding-bottom: 12px;
+  }
+
+  /* Overlay com melhor performance */
+  .sidebar-overlay.active {
+    display: block;
+    animation: fadeInOverlay 0.2s ease;
+  }
+  @keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ======================
+     Bottom Navigation Bar
+     ====================== */
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--bottom-nav-height);
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    z-index: 250;
+    align-items: stretch;
+    justify-content: space-around;
+    padding-bottom: var(--safe-b);
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background: rgba(30, 41, 59, 0.96);
+  }
+  body.light .bottom-nav {
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+    padding: 4px 2px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .bottom-nav-item:active {
+    transform: scale(0.92);
+  }
+  .bottom-nav-item.active {
+    color: var(--accent);
+  }
+  .bottom-nav-item.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: var(--accent);
+  }
+  .bottom-nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    line-height: 1;
+  }
+  .bottom-nav-icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+  .bottom-nav-label {
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  /* Ajuste do main para não ficar atrás do bottom nav */
+  .main {
+    padding-bottom: var(--bottom-nav-height);
+  }
+
+  /* ======================
+     Topbar Mobile
+     ====================== */
+  .topbar {
+    padding: 0 10px !important;
+    gap: 8px !important;
+    height: var(--mobile-header-height) !important;
+    padding-top: var(--safe-t) !important;
+    min-height: calc(var(--mobile-header-height) + var(--safe-t));
+  }
+  .topbar-title {
+    font-size: 14px !important;
+  }
+  .hamburger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+  }
+  .hamburger:active {
+    background: var(--bg-hover);
+  }
+
+  /* Search ocupa menos espaço em telas pequenas */
+  .topbar-search {
+    max-width: none;
+    flex: 1;
+    min-width: 0;
+  }
+  .topbar-search input {
+    font-size: 13px !important;
+    height: 34px;
+    padding-left: 34px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 8px;
+  }
+  .search-icon {
+    left: 10px;
+    font-size: 13px;
+  }
+
+  /* Quick action btn menor */
+  .topbar-actions .btn {
+    padding: 4px 10px;
+    font-size: 12px;
+    min-height: 34px;
+  }
+
+  /* ======================
+     Page Content
+     ====================== */
+  .page-content {
+    padding: 12px !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+  }
+
+  /* ======================
+     Cards Grid Mobile
+     ====================== */
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  .card {
+    padding: 12px !important;
+    border-radius: var(--mobile-radius) !important;
+  }
+  .card:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
+  }
+  .card-value {
+    font-size: 20px !important;
+  }
+  .card-label {
+    font-size: 10px !important;
+  }
+  .card-icon {
+    font-size: 16px !important;
+  }
+
+  /* ======================
+     Charts Mobile
+     ====================== */
+  .charts-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .chart-card {
+    padding: 12px !important;
+    border-radius: var(--mobile-radius) !important;
+  }
+  .chart-card h3 {
+    font-size: 12px !important;
+    margin-bottom: 8px !important;
+  }
+  .chart-card canvas {
+    max-height: 200px !important;
+  }
+
+  /* ======================
+     Form Grid Mobile
+     ====================== */
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .form-group {
+    gap: 3px;
+  }
+  .form-group label {
+    font-size: 12px !important;
+    font-weight: 600;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px !important;
+    padding: 12px 14px;
+    border-radius: 8px;
+    min-height: 48px;
+  }
+  .form-group textarea {
+    min-height: 100px;
+  }
+
+  /* ======================
+     Section Header
+     ====================== */
+  .section-header h2 {
+    font-size: 15px !important;
+  }
+  .section-actions {
+    gap: 6px;
+  }
+  .filter-bar {
+    gap: 6px;
+  }
+  .filter-bar select,
+  .filter-bar input {
+    min-width: 90px !important;
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    height: 36px;
+    border-radius: 8px;
+  }
+
+  /* ======================
+     Tables -> Card View
+     ====================== */
+  .table-wrapper {
+    border-radius: var(--mobile-radius) !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table {
+    min-width: 100%;
+  }
+  th {
+    padding: 8px 10px !important;
+    font-size: 10px !important;
+  }
+  td {
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+  }
+  td .actions .btn {
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    min-height: 32px;
+  }
+
+  /* ======================
+     Modal -> Bottom Sheet
+     ====================== */
+  .modal-overlay {
+    padding: 0 !important;
+    align-items: flex-end !important;
+  }
+  .modal {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border-radius: 16px 16px 0 0 !important;
+    max-height: 92vh !important;
+    animation: slideUp 0.3s ease;
+    padding-bottom: var(--safe-b);
+  }
+  .modal.large {
+    max-width: 100% !important;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  /* Drag handle visual */
+  .modal-header::before {
+    content: '';
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--bg-tertiary);
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .modal-header {
+    position: relative;
+    padding-top: 18px !important;
+    padding-bottom: 12px !important;
+  }
+  .modal-body {
+    padding: 16px !important;
+  }
+  .modal-footer {
+    padding: 12px 16px !important;
+    gap: 10px;
+  }
+  .modal-footer .btn {
+    flex: 1;
+    min-height: 48px;
+    font-size: 14px;
+  }
+
+  /* ======================
+     Empty State
+     ====================== */
+  .empty-state {
+    padding: 40px 16px !important;
+  }
+  .empty-state .icon {
+    font-size: 36px !important;
+  }
+  .empty-state h3 {
+    font-size: 15px !important;
+  }
+  .empty-state p {
+    font-size: 13px !important;
+  }
+
+  /* ======================
+     Calendar Mobile
+     ====================== */
+  .calendar-grid {
+    gap: 3px !important;
+  }
+  .calendar-header {
+    font-size: 10px !important;
+    padding: 6px 0 !important;
+  }
+  .calendar-day {
+    font-size: 12px !important;
+    min-height: 40px !important;
+    border-radius: 8px !important;
+  }
+
+  /* ======================
+     Photos Grid
+     ====================== */
+  .photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)) !important;
+    gap: 6px !important;
+  }
+  .photo-item {
+    border-radius: 8px !important;
+  }
+
+  /* ======================
+     Toast no Mobile
+     ====================== */
+  .toast-container {
+    bottom: calc(16px + var(--bottom-nav-height) + var(--safe-b)) !important;
+    left: 16px !important;
+    right: 16px !important;
+  }
+  .toast {
+    max-width: 100% !important;
+    padding: 14px 18px !important;
+    font-size: 14px !important;
+    border-radius: 10px !important;
+  }
+
+  /* ======================
+     Search Results
+     ====================== */
+  .search-results {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    top: calc(var(--mobile-header-height) + 8px);
+    max-height: 50vh;
+    z-index: 300;
+    border-radius: var(--mobile-radius);
+    box-shadow: var(--shadow-lg);
+  }
+  .search-result-item {
+    padding: 14px !important;
+    font-size: 14px !important;
+    min-height: 48px;
+  }
+}
+
+/* =============================================
+   Extra-pequeno (<= 480px) — iPhone SE etc
+   ============================================= */
+@media (max-width: 480px) {
+  :root {
+    --bottom-nav-height: 50px;
+  }
+
+  .page-content {
+    padding: 8px !important;
+  }
+
+  .cards-grid {
+    gap: 6px !important;
+  }
+  .card {
+    padding: 10px !important;
+  }
+  .card-value {
+    font-size: 17px !important;
+  }
+  .card-label {
+    font-size: 9px !important;
+  }
+
+  .bottom-nav-item.active::after {
+    width: 16px;
+    height: 2px;
+  }
+  .bottom-nav-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .bottom-nav-label {
+    font-size: 8px;
+  }
+
+  .modal-body {
+    padding: 12px !important;
+  }
+  .modal-footer .btn {
+    min-height: 44px;
+    font-size: 13px;
+  }
+
+  .filter-bar select,
+  .filter-bar input {
+    min-width: 70px !important;
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+    height: 32px;
+  }
+
+  td .actions .btn {
+    padding: 2px 6px !important;
+    font-size: 10px !important;
+    min-height: 28px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px 12px;
+    min-height: 44px;
+  }
+
+  .calendar-day {
+    min-height: 36px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* =============================================
+   Muito pequeno (<= 360px) — dispositivos muito compactos
+   ============================================= */
+@media (max-width: 360px) {
+  .cards-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 5px !important;
+  }
+
+  .bottom-nav {
+    height: 46px !important;
+  }
+  .bottom-nav-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  .bottom-nav-label {
+    font-size: 7px;
+  }
+
+  .topbar-title {
+    display: none;
+  }
+}

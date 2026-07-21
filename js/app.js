@@ -25,7 +25,7 @@ const Router = {
     if (!config) return;
 
     document.getElementById('pageTitle').textContent = config.label;
-    document.querySelectorAll('.nav-item').forEach(el => {
+    document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(el => {
       el.classList.toggle('active', el.dataset.route === route);
     });
 
@@ -50,6 +50,104 @@ const Router = {
 
     const route = window.location.hash.replace('#', '') || 'dashboard';
     this.navigate(route);
+  },
+};
+
+const Mobile = {
+  isMobile() { return window.innerWidth <= 768; },
+
+  init() {
+    if (!this.isMobile()) return;
+    this.createBottomNav();
+    this.setupSwipe();
+    this.setupOverlaySwipe();
+    window.addEventListener('resize', () => this.handleResize());
+  },
+
+  createBottomNav() {
+    if (document.getElementById('bottomNav')) return;
+    const nav = document.createElement('nav');
+    nav.className = 'bottom-nav';
+    nav.id = 'bottomNav';
+    const items = [
+      { route: 'dashboard', icon: Icons.dashboard, label: 'Início' },
+      { route: 'properties', icon: Icons.building, label: 'Imóveis' },
+      { route: 'tenants', icon: Icons.users, label: 'Inquilinos' },
+      { route: 'contracts', icon: Icons.file, label: 'Contratos' },
+      { route: 'finances', icon: Icons.dollar, label: 'Finanças' },
+    ];
+    nav.innerHTML = items.map(item =>
+      `<a href="#${item.route}" class="bottom-nav-item${item.route === 'dashboard' ? ' active' : ''}" data-route="${item.route}">
+        <span class="bottom-nav-icon">${item.icon}</span>
+        <span class="bottom-nav-label">${item.label}</span>
+      </a>`
+    ).join('');
+    document.getElementById('app').appendChild(nav);
+  },
+
+  setupSwipe() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    let startX = 0, startY = 0, distX = 0;
+
+    document.addEventListener('touchstart', e => {
+      const touch = e.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchmove', e => {
+      if (!sidebar.classList.contains('open')) return;
+      const touch = e.touches[0];
+      distX = touch.clientX - startX;
+      const distY = touch.clientY - startY;
+      if (Math.abs(distX) > Math.abs(distY) && distX < 0) {
+        sidebar.style.transform = `translateX(${Math.max(distX, -240)}px)`;
+        overlay.style.opacity = Math.max(0, 0.5 + distX / 480);
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchend', () => {
+      if (distX < -60) {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+      }
+      sidebar.style.transform = '';
+      overlay.style.opacity = '';
+      distX = 0;
+    }, { passive: true });
+  },
+
+  setupOverlaySwipe() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    let startX = 0, swiped = false;
+
+    overlay.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      swiped = false;
+    }, { passive: true });
+
+    overlay.addEventListener('touchmove', e => {
+      const dx = e.touches[0].clientX - startX;
+      if (dx > 30) swiped = true;
+    }, { passive: true });
+
+    overlay.addEventListener('touchend', () => {
+      if (swiped) {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+      }
+    }, { passive: true });
+  },
+
+  handleResize() {
+    if (!this.isMobile()) {
+      const nav = document.getElementById('bottomNav');
+      if (nav) nav.remove();
+    } else if (!document.getElementById('bottomNav')) {
+      this.createBottomNav();
+    }
   },
 };
 
@@ -82,6 +180,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('sidebarToggle').addEventListener('click', closeSidebar);
   document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
   document.getElementById('hamburger').addEventListener('click', toggleSidebar);
+
+  document.querySelectorAll('.sidebar-nav .nav-item').forEach(el => {
+    el.addEventListener('click', () => {
+      if (Mobile.isMobile()) closeSidebar();
+    });
+  });
 
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) closeSidebar();
@@ -163,4 +267,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   Router.init();
 
   checkFirstRun();
+
+  Mobile.init();
 });
