@@ -91,20 +91,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function checkFirstRun() {
     const properties = await db.getAll('properties');
     if (properties.length === 0) {
-      const seen = localStorage.getItem('imobadmin-welcome');
-      if (!seen) {
-        localStorage.setItem('imobadmin-welcome', '1');
-        setTimeout(() => {
-          showModal('👋 Bem-vindo ao ImobAdmin!', `
-            <p style="margin-bottom:16px;">Sistema de gestão de imóveis para locação.</p>
-            <p style="margin-bottom:16px;">Você gostaria de carregar dados de demonstração para explorar o sistema?</p>
-            <p style="font-size:13px;color:var(--text-muted);">📊 10 imóveis | 👥 5 inquilinos | 📄 6 contratos | 💰 13 receitas | 📉 8 despesas</p>
-          `, [
-            { label: 'Não, obrigado', cls: 'btn-ghost' },
-            { label: '🎯 Carregar Demo', cls: 'btn-primary', action: () => SeedData.load() },
-          ]);
-        }, 300);
-      }
+      await SeedData.load();
     }
   }
 
