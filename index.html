@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Gestão inteligente de imóveis para locação">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <title>Gestão de Imóveis</title>
+</head>
+<body class="dark">
+  <div id="app">
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-icon">🏠</span>
+          <span class="logo-text">ImobAdmin</span>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&times;</button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" data-route="dashboard">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="#properties" class="nav-item" data-route="properties">
+          <span class="nav-icon">🏘️</span>
+          <span class="nav-label">Imóveis</span>
+        </a>
+        <a href="#tenants" class="nav-item" data-route="tenants">
+          <span class="nav-icon">👥</span>
+          <span class="nav-label">Inquilinos</span>
+        </a>
+        <a href="#contracts" class="nav-item" data-route="contracts">
+          <span class="nav-icon">📄</span>
+          <span class="nav-label">Contratos</span>
+        </a>
+        <a href="#finances" class="nav-item" data-route="finances">
+          <span class="nav-icon">💰</span>
+          <span class="nav-label">Financeiro</span>
+        </a>
+        <a href="#crm" class="nav-item" data-route="crm">
+          <span class="nav-icon">🤝</span>
+          <span class="nav-label">CRM</span>
+        </a>
+        <a href="#calendar" class="nav-item" data-route="calendar">
+          <span class="nav-icon">📅</span>
+          <span class="nav-label">Agenda</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div style="display:flex;gap:4px;align-items:center;">
+          <button id="loadDemoData" class="btn btn-sm btn-ghost" title="Carregar dados demo" style="font-size:11px;padding:4px 8px;">📥 Demo</button>
+          <button id="clearAllData" class="btn btn-sm btn-ghost" title="Limpar dados" style="font-size:11px;padding:4px 8px;">🗑️</button>
+          <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+            <span class="theme-icon">🌙</span>
+          </button>
+        </div>
+        <div class="user-info">
+          <span class="user-avatar">JD</span>
+          <span class="user-name">João</span>
+        </div>
+      </div>
+    </aside>
+
+    <main id="main" class="main">
+      <header class="topbar">
+        <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+        <div class="topbar-title" id="pageTitle">Dashboard</div>
+        <div class="topbar-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="globalSearch" placeholder="Pesquisa global..." autocomplete="off">
+          <div id="searchResults" class="search-results"></div>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-sm btn-primary" id="quickAction">+ Novo</button>
+        </div>
+      </header>
+
+      <section id="pageContent" class="page-content">
+      </section>
+    </main>
+  </div>
+
+  <div id="modalOverlay" class="modal-overlay hidden">
+    <div class="modal" id="modalContainer">
+      <div class="modal-header">
+        <h3 id="modalTitle">Modal</h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <script src="js/db.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/properties.js"></script>
+  <script src="js/tenants.js"></script>
+  <script src="js/contracts.js"></script>
+  <script src="js/finances.js"></script>
+  <script src="js/crm.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/seed.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
