@@ -1,0 +1,563 @@
+# PROMPT – MIDIAKIT DA PLATAFORMA (LANDING PAGE DE APRESENTAÇÃO)
+
+Crie uma página única (one-page) em estilo **Media Kit / Product Showcase**, semelhante às páginas de apresentação da Stripe, Linear, Notion, Vercel e Apple.
+
+O objetivo é impressionar investidores e clientes logo no primeiro acesso.
+
+A página deve possuir largura máxima de 1600px, cantos arredondados, sombras suaves, bastante espaço em branco e animações elegantes.
+
+---
+
+# Paleta de cores
+
+Primária
+Azul Royal
+#2563EB
+
+Secundária
+Verde Esmeralda
+#10B981
+
+Alerta
+Laranja
+#F59E0B
+
+Erro
+Vermelho
+#EF4444
+
+Fundo
+#F8FAFC
+
+Cards
+#FFFFFF
+
+Texto principal
+#0F172A
+
+Texto secundário
+#64748B
+
+Bordas
+#E2E8F0
+
+---
+
+# Tipografia
+
+Fonte:
+
+Poppins
+
+Pesos
+
+300
+400
+500
+600
+700
+
+Título principal
+
+56px
+
+Subtítulo
+
+22px
+
+Título de seção
+
+36px
+
+Texto
+
+18px
+
+---
+
+# Estrutura da Página
+
+A página será dividida em 11 seções.
+
+==================================================
+
+SEÇÃO 1
+
+HERO
+
+==================================================
+
+Logo no canto esquerdo
+
+Nome do sistema
+
+LocaHub
+
+Abaixo
+
+Sistema Inteligente para Gestão de Imóveis de Locação
+
+Texto
+
+Controle todos os seus imóveis, contratos, pagamentos e inquilinos em uma única plataforma moderna, segura e automatizada.
+
+Botões
+
+Conhecer Plataforma
+
+Solicitar Demonstração
+
+No lado direito
+
+Imagem grande do Dashboard ocupando aproximadamente 55% da tela.
+
+Aplicar efeito Glassmorphism.
+
+Adicionar sombra.
+
+Adicionar leve animação flutuando.
+
+Ao fundo
+
+Shapes azuis desfocados.
+
+Gradiente suave.
+
+---
+
+Na parte superior adicionar quatro indicadores
+
+🏠
+
++500 imóveis administrados
+
+💰
+
+Mais de R$ 8 milhões movimentados
+
+⭐
+
+98% satisfação
+
+🔒
+
+100% seguro
+
+==================================================
+
+SEÇÃO 2
+
+SOBRE A PLATAFORMA
+
+==================================================
+
+Título
+
+Uma plataforma feita para proprietários que querem crescer.
+
+Texto
+
+O LocaHub centraliza toda a gestão dos seus imóveis em um único sistema, eliminando planilhas, controles manuais e retrabalho.
+
+Ao lado
+
+4 cards.
+
+Cada card possui um ícone circular.
+
+Card 1
+
+🏢
+
+Gestão completa dos imóveis
+
+Card 2
+
+💵
+
+Controle financeiro inteligente
+
+Card 3
+
+📅
+
+Contratos automatizados
+
+Card 4
+
+🤖
+
+Inteligência Artificial
+
+==================================================
+
+SEÇÃO 3
+
+DASHBOARD
+
+==================================================
+
+Grande screenshot.
+
+Explicar cada indicador.
+
+Total de imóveis
+
+Imóveis alugados
+
+Imóveis vagos
+
+Receita prevista
+
+Receita recebida
+
+Receita em atraso
+
+Lucro mensal
+
+Contratos vencendo
+
+Mostrar setas apontando para cada card.
+
+==================================================
+
+SEÇÃO 4
+
+TELAS DO SISTEMA
+
+==================================================
+
+Criar uma grade.
+
+2 linhas
+
+3 colunas
+
+Cada imagem dentro de um MacBook mockup.
+
+Tela 1
+
+Dashboard
+
+Tela 2
+
+Imóveis
+
+Tela 3
+
+Contratos
+
+Tela 4
+
+Financeiro
+
+Tela 5
+
+CRM
+
+Tela 6
+
+Relatórios
+
+Ao passar o mouse
+
+Zoom
+
+Sombra
+
+==================================================
+
+SEÇÃO 5
+
+VERSÃO MOBILE
+
+==================================================
+
+Três iPhones alinhados.
+
+Tela
+
+Dashboard
+
+Tela
+
+Financeiro
+
+Tela
+
+Agenda
+
+Texto
+
+Acesse sua gestão de qualquer lugar.
+
+Totalmente responsivo.
+
+Compatível com Android e iPhone.
+
+PWA.
+
+==================================================
+
+SEÇÃO 6
+
+FUNCIONALIDADES
+
+==================================================
+
+Grid
+
+2 colunas
+
+10 funcionalidades
+
+Cada item possui
+
+Ícone azul
+
+Título
+
+Descrição
+
+Lista
+
+Cadastro de imóveis
+
+Cadastro de inquilinos
+
+Gestão de contratos
+
+Controle financeiro
+
+Fluxo de caixa
+
+Cobranças automáticas
+
+Agenda
+
+Portal do inquilino
+
+WhatsApp
+
+IA integrada
+
+==================================================
+
+SEÇÃO 7
+
+INTELIGÊNCIA ARTIFICIAL
+
+==================================================
+
+Tela simulando um chat.
+
+Perguntas
+
+Quem está inadimplente?
+
+Quais contratos vencem este mês?
+
+Quanto recebi este ano?
+
+Qual imóvel é mais lucrativo?
+
+Mostrar respostas em formato de conversa.
+
+Adicionar brilho atrás do robô.
+
+==================================================
+
+SEÇÃO 8
+
+BENEFÍCIOS
+
+==================================================
+
+Cards horizontais.
+
+Cada card
+
+Ícone
+
+Título
+
+Texto
+
+Benefícios
+
+Economize tempo
+
+Reduza inadimplência
+
+Organize seus contratos
+
+Controle financeiro completo
+
+Aumente sua rentabilidade
+
+Automatize cobranças
+
+==================================================
+
+SEÇÃO 9
+
+SEGURANÇA
+
+==================================================
+
+Background azul escuro.
+
+Ícones grandes.
+
+Backup automático
+
+Criptografia
+
+Login seguro
+
+Controle de permissões
+
+LGPD
+
+Banco em nuvem
+
+==================================================
+
+SEÇÃO 10
+
+PLANOS
+
+==================================================
+
+Criar três cards.
+
+Plano Start
+
+Até 10 imóveis
+
+Plano Pro
+
+Até 100 imóveis
+
+Plano Enterprise
+
+Ilimitado
+
+Destacar o plano Pro.
+
+Adicionar botão
+
+Solicitar demonstração
+
+==================================================
+
+SEÇÃO 11
+
+RODAPÉ
+
+==================================================
+
+Logo
+
+Descrição
+
+Links
+
+Recursos
+
+Contato
+
+Suporte
+
+Política de Privacidade
+
+Termos de Uso
+
+Redes sociais
+
+Instagram
+
+LinkedIn
+
+WhatsApp
+
+GitHub
+
+Direitos reservados.
+
+---
+
+# Componentes Visuais
+
+Utilizar:
+
+Cards arredondados (20px)
+
+Glassmorphism
+
+Blur
+
+Gradientes
+
+Sombras suaves
+
+Micro animações
+
+Hover elegante
+
+Botões modernos
+
+Ícones Lucide React
+
+Heroicons
+
+Framer Motion
+
+---
+
+# Responsividade
+
+Desktop
+
+Notebook
+
+Tablet
+
+Celular
+
+Sem quebra de layout.
+
+---
+
+# Tecnologias
+
+React
+
+Next.js
+
+TailwindCSS
+
+Shadcn UI
+
+Framer Motion
+
+Lucide React
+
+TypeScript
+
+---
+
+# Objetivo do Design
+
+A página deve transmitir imediatamente:
+
+✔ Plataforma premium
+✔ Tecnologia de ponta
+✔ Facilidade de uso
+✔ Organização
+✔ Segurança
+✔ Automação
+✔ Inteligência Artificial
+✔ Alta credibilidade
+
+O resultado final deve lembrar as páginas institucionais de empresas como Stripe, Linear, Vercel e Notion, com foco em conversão e apresentação profissional do produto, utilizando dados fictícios realistas, imagens mockadas do sistema e animações sutis que valorizem a interface sem comprometer a performance.
