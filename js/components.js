@@ -1,5 +1,5 @@
 const Utils = {
-  formatCurrency: (v) => `R$ ${Number(v || 0).toFixed(2).replace('.', ',')}`,
+  formatCurrency: (v) => `R$ ${Number(v || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
   formatDate: (d) => { if (!d) return ''; const dt = new Date(d); return dt.toLocaleDateString('pt-BR'); },
   formatDateISO: (d) => { if (!d) return ''; return new Date(d).toISOString().split('T')[0]; },
   parseDate: (s) => { if (!s) return null; const [y, m, d] = s.split('-'); return new Date(+y, +m - 1, +d); },
