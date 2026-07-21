@@ -91,7 +91,7 @@ Logo no canto esquerdo
 
 Nome do sistema
 
-LocaHub
+LocaFacil
 
 Abaixo
 
@@ -157,7 +157,7 @@ Uma plataforma feita para proprietários que querem crescer.
 
 Texto
 
-O LocaHub centraliza toda a gestão dos seus imóveis em um único sistema, eliminando planilhas, controles manuais e retrabalho.
+O LocaFacil centraliza toda a gestão dos seus imóveis em um único sistema, eliminando planilhas, controles manuais e retrabalho.
 
 Ao lado
 
